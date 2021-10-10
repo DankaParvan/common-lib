@@ -3,8 +3,10 @@ package com.itmo.microservices.commonlib.metrics
 import com.itmo.microservices.commonlib.logging.NotableEvent
 import io.micrometer.core.instrument.Metrics
 import io.prometheus.client.Counter
+import org.springframework.stereotype.Component
 
-open class CommonMetricsCollector(private val serviceName: String) {
+@Component
+open class CommonMetricsCollector(private val serviceName: String = "TestService") {
 
     private val prometheusEventsCounter = createAndRegisterCounter(
         EVENTS,
